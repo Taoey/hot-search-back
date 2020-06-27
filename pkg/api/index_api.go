@@ -3,23 +3,8 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
-
-// route: "/"
-
-func Index(ctx iris.Context) {
-	ctx.WriteString("hello world -- from isis")
-}
-
-func IndexHelloJson(ctx iris.Context) {
-	s := Student{
-		Id:   12,
-		Name: "tao",
-	}
-	bytes, _ := json.Marshal(s)
-	fmt.Println(string(bytes))
-}
 
 // 变量名称必须大写否则转化json的时候不能进行转化
 type Student struct {
@@ -35,4 +20,17 @@ type User struct {
 	Sex      string
 	Email    string
 	Phone    string
+}
+
+func ApiIndex(ctx iris.Context) {
+	ctx.WriteString("hello world -- from isis")
+}
+
+func ApiIndexJsonTest(ctx iris.Context) {
+	s := Student{
+		Id:   12,
+		Name: "tao",
+	}
+	bytes, _ := json.Marshal(s)
+	fmt.Println(string(bytes))
 }

@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/Taoey/iris-cli/src/pkg/api"
-	"github.com/Taoey/iris-cli/src/sysinit"
-	"github.com/kataras/iris"
+	"github.com/Taoey/iris-cli/pkg/api"
+	"github.com/Taoey/iris-cli/pkg/sysinit"
+	"github.com/iris-contrib/middleware/cors"
+	"github.com/kataras/iris/v12"
 	"log"
 )
 
@@ -28,13 +29,18 @@ func main() {
 // 设置路由
 func SetRoutes() {
 
+	crs := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
+		AllowCredentials: true,
+	})
+
 	//主页
-	App.Get("/", api.Index)
-	App.Get("/hello_json", api.IndexHelloJson)
+	App.Get("/", api.ApiIndex)
 
 	//根API
-	RootApi := App.Party("api/")
+	RootApi := App.Party("api/v1", crs).AllowMethods(iris.MethodOptions)
 
+	RootApi.Get("/test/index", api.ApiIndexJsonTest)
 	// upload
 	RootApi.Post("/upload/ali_bill", iris.LimitRequestBodySize(5<<20), api.UploadAliBill)
 

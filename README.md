@@ -30,3 +30,8 @@ IRIS（go语言web框架）脚手架项目
 
 - Mongo连接：gopkg.in/mgo.v2
 - config配置读取 ：github.com/olebedev/config 
+
+
+### 跨域问题
+详见：https://studyiris.com/example/exper/cors.html
+go get -u github.com/iris-contrib/middleware/...
