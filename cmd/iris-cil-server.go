@@ -29,6 +29,7 @@ func main() {
 // 设置路由
 func SetRoutes() {
 
+	// 跨域设置
 	crs := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
 		AllowCredentials: true,
