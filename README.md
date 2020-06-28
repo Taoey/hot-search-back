@@ -35,3 +35,7 @@ IRIS（go语言web框架）脚手架项目
 ### 跨域问题
 详见：https://studyiris.com/example/exper/cors.html
 go get -u github.com/iris-contrib/middleware/...
+
+
+### 开发环境
+go 1.14+

@@ -1,8 +1,8 @@
 package api
 
 import (
-	. "github.com/Taoey/iris-cli/pkg/entity"
-	"github.com/Taoey/iris-cli/pkg/service"
+	. "github.com/Taoey/hot-search-back/pkg/entity"
+	"github.com/Taoey/hot-search-back/pkg/service"
 	"github.com/kataras/iris/v12"
 	"io/ioutil"
 )

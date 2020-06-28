@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/Taoey/iris-cli/pkg/api"
-	"github.com/Taoey/iris-cli/pkg/sysinit"
+	"github.com/Taoey/hot-search-back/pkg/api"
+	"github.com/Taoey/hot-search-back/pkg/sysinit"
 	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
 	"log"
