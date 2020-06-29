@@ -1,12 +1,24 @@
-# 服务器配置
+dev: true # 开发者模式
 server:
   url: 127.0.0.1:8900
-
-# 热部署
 
 # redis 配置
 
 # MongoDB配置
 mongodb:
+  open: false
   url: 127.0.0.1:27017
   pool_limit: 200
+
+# Mysql配置
+mysql:
+  open: false
+  url: root:123456@tcp(192.168.3.148:3306)/hotsearch?charset=utf8 #url格式：⽤户名:密码@(IP:端口)/数据库名称？编码⽅式
+  max_idle: 10  # 空闲最大连接数
+  max_open: 100 # 最大连接数
+
+# 日志配置
+logger:
+  level: DEBUG #开发环境需:DEBUG ; 生产环境：INFO
+  style: console  # console / json
+  path: G:\temp\hotsearch.log

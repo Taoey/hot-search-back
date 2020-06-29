@@ -13,6 +13,7 @@ var App *iris.Application
 //程序入口
 func main() {
 	// 初始化
+	sysinit.InitLogger()
 	sysinit.InitConf()
 	//myinit.InitMongo()
 	//myinit.InitQuartz()
