@@ -66,10 +66,3 @@ func Test04(t *testing.T) {
 	db.Table("zhihu").Find(&items)
 	fmt.Println(items)
 }
-
-func TestDbGetConnect(t *testing.T) {
-	con := DbGetConnect()
-	defer con.Close()
-	err := con.Ping()
-	fmt.Println(err)
-}
