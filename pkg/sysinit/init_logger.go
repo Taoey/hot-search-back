@@ -2,6 +2,7 @@ package sysinit
 
 import (
 	"fmt"
+	. "github.com/Taoey/hot-search-back/pkg"
 	"github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -10,8 +11,6 @@ import (
 	"strings"
 	"time"
 )
-
-var LOG *zap.SugaredLogger
 
 func InitLogger() {
 	// 日志文件保存及分割：按照日志大小进行分割
@@ -68,7 +67,6 @@ func InitLogger() {
 	}
 
 	filelogWriter := getWriter(GCF.UString("logger.path", "./logs/log"))
-
 	core := zapcore.NewCore(
 		styleEncoder,
 		//zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout), zapcore.AddSync(&hook)), // 打印到控制台和文件

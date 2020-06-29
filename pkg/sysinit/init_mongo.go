@@ -1,10 +1,9 @@
 package sysinit
 
 import (
+	. "github.com/Taoey/hot-search-back/pkg"
 	"gopkg.in/mgo.v2"
 )
-
-var MongoSession *mgo.Session
 
 func InitMongo() {
 	MGO_URL := GCF.UString("mongodb.url")

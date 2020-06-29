@@ -4,12 +4,13 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
 	"testing"
 )
 
 func Test01(t *testing.T) {
-	//第⼀步：打开数据库,格式是 ⽤户名：密码@/数据库名称？编码⽅式
-	db, err := sql.Open("mysql", "root:123456@/hotsearch?charset=utf8")
+	//第⼀步：打开数据库,格式是 ⽤户名:密码@(IP:端口)/数据库名称？编码⽅式
+	db, err := sql.Open("mysql", "root:123456@tcp(192.168.3.148:3306)/hotsearch?charset=utf8")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -21,4 +22,54 @@ func Test01(t *testing.T) {
 	result, err := db.Exec(sql, args...)
 	fmt.Println(result, err)
 
+}
+
+type zhihu struct {
+	Id   int64
+	Name string
+}
+
+// 连接测试
+func Test02(t *testing.T) {
+	db, err := gorm.Open("mysql", "root:123456@tcp(192.168.3.148:3306)/hotsearch?charset=utf8")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(db)
+	defer db.Close()
+}
+
+// 插入数据
+func Test03(t *testing.T) {
+	db, err := gorm.Open("mysql", "root:123456@tcp(192.168.3.148:3306)/hotsearch?charset=utf8")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer db.Close()
+
+	item := zhihu{18, "tao"}
+	db.LogMode(true)
+	create := db.Table("zhihu").Create(item)
+	fmt.Println(create)
+}
+
+// 查询数据
+func Test04(t *testing.T) {
+	db, err := gorm.Open("mysql", "root:123456@tcp(192.168.3.148:3306)/hotsearch?charset=utf8")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer db.Close()
+
+	items := []zhihu{}
+	db.LogMode(true)
+	db.Table("zhihu").Find(&items)
+	fmt.Println(items)
+}
+
+func TestDbGetConnect(t *testing.T) {
+	con := DbGetConnect()
+	defer con.Close()
+	err := con.Ping()
+	fmt.Println(err)
 }

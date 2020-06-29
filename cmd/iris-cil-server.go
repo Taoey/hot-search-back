@@ -1,8 +1,9 @@
 package main
 
 import (
+	. "github.com/Taoey/hot-search-back/pkg"
 	"github.com/Taoey/hot-search-back/pkg/api"
-	"github.com/Taoey/hot-search-back/pkg/sysinit"
+	. "github.com/Taoey/hot-search-back/pkg/sysinit"
 	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
 	"log"
@@ -13,8 +14,9 @@ var App *iris.Application
 //程序入口
 func main() {
 	// 初始化
-	sysinit.InitLogger()
-	sysinit.InitConf()
+	InitConf()
+
+	InitLogger()
 	//myinit.InitMongo()
 	//myinit.InitQuartz()
 
@@ -23,7 +25,7 @@ func main() {
 	SetRoutes()
 
 	// 启动
-	run := App.Run(iris.Addr(sysinit.GCF.UString("server.url")), iris.WithCharset("UTF-8"))
+	run := App.Run(iris.Addr(GCF.UString("server.url")), iris.WithCharset("UTF-8"))
 	log.Fatal(run)
 }
 
