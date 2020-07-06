@@ -103,7 +103,7 @@ func getWriter(filename string) io.Writer {
 		filename+".%Y%m%d%H", // 没有使用go风格反人类的format格式
 		rotatelogs.WithLinkName(filename),
 		rotatelogs.WithMaxAge(time.Hour*24*7),
-		rotatelogs.WithRotationTime(time.Hour),
+		rotatelogs.WithRotationTime(time.Hour*4),
 	)
 
 	if err != nil {
