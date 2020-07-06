@@ -1,9 +1,9 @@
 package entity
 
 type Message struct {
-	Code    int
-	Message string
-	Result  interface{}
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
+	Result  interface{} `json:"result"`
 }
 
 func BadResponse(msg string) Message {
