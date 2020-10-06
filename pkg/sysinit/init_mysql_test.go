@@ -3,6 +3,7 @@ package sysinit
 import (
 	"database/sql"
 	"fmt"
+	"github.com/Taoey/hot-search-back/pkg/service"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"testing"
@@ -61,8 +62,10 @@ func Test04(t *testing.T) {
 	}
 	defer db.Close()
 
-	items := []zhihu{}
+	items := []service.ZhihuItem{}
+
 	db.LogMode(true)
-	db.Table("zhihu").Find(&items)
+	db.CreateTable(service.ZhihuItem{})
+	//db.Table("zhihu").Find(&items)
 	fmt.Println(items)
 }

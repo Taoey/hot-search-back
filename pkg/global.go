@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"database/sql"
+	"github.com/jinzhu/gorm"
 	"github.com/olebedev/config"
 	"go.uber.org/zap"
 	"gopkg.in/mgo.v2"
@@ -19,4 +19,4 @@ var GCF *config.Config //global config
 var MongoSession *mgo.Session
 
 // mysql 连接（已经配置了连接池）
-var MysqlSession *sql.DB
+var MysqlSession *gorm.DB

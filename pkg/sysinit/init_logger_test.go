@@ -2,6 +2,7 @@ package sysinit
 
 import (
 	"fmt"
+	. "github.com/Taoey/hot-search-back/pkg"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"testing"
